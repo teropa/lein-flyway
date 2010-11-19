@@ -15,7 +15,7 @@
 (defn- configure [project & args]
   (doseq [[k setter] (partition 2 args)]
     (if-let [prop (get-in project [:flyway k])]
-      (setter k))))
+      (setter prop))))
 
 (defn flyway [project]
   (let [f (Flyway.)]
