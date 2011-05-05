@@ -3,6 +3,7 @@
                  [org.clojure/clojure-contrib "1.2.0"]
                  [com.googlecode.flyway/flyway-core "1.3.1"]
                  [commons-dbcp "1.4"]
-                 [org.springframework/spring-jdbc "2.5.6"]]
+                 [org.springframework/spring-jdbc "2.5.6"]
+                 [postgresql "9.0-801.jdbc4"]]
   :eval-in-leiningen true)
 
