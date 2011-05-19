@@ -5,6 +5,7 @@ As a Leiningen plugin, it is meant to be run from a command-line terminal, howev
 
 ## To run it from the command-line terminal
 Add the following section in the defproject method of the `project.clj` file:
+
 		:flyway {:driver "org.postgresql.Driver" :url "jdbc:postgresql:$DB$" :username "postgres" :password "$PWD$"}
 
 All the tasks in the plugin expect a first argument called `project`. This `map` is passed as the value of this argument.
@@ -13,9 +14,11 @@ The above example connection string helps to connect to a PostgreSql database, s
 
 ## To run it from the REPL
 Require one of the namespaces from the plugin e.g.
+
 		(require '[leiningen.flyway-status :as flyway-status])
 
 To check the status of the database
+
 	  (flyway-status/flyway-status {:flyway {:driver "org.postgresql.Driver" :url "jdbc:postgresql:$DB$" :username "postgres" :password "$PWD$"}})
 
 Other tasks can be run similarly.
