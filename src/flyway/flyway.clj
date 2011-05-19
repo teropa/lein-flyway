@@ -5,6 +5,9 @@
   (:import [com.googlecode.flyway.core.validation ValidationMode ValidationErrorMode]))
 
 (defn- data-source [project]
+  "Creates and initializes an object of the org.apache.commons.dbcp.BasicDataSource class.
+   It uses the values of the :driver, :url, :username and :password keys of the map
+   passed to the project argument."
   (let [conf (project :flyway)]
     (doto (BasicDataSource.)
       (.setDriverClassName (:driver conf))
@@ -18,6 +21,12 @@
       (setter prop))))
 
 (defn flyway [project]
+  "Initializes and returns an object of the com.googlecode.flyway.core.Flyway class.
+   It sets the various properties of this object like setTable, setBaseDir, setEncoding,
+   setSqlMigrationPrefix, setSqlMigrationSuffix, setValidationMode and setValidationErrorMode
+   using the :table, :base-dir, :encoding, :sql-migration-prefix, :sql-migration-suffix,
+   :validation-mode and :validation-error-mode keys respectively of the map passed to
+   the project argument."
   (let [f (Flyway.)]
     (.setDataSource f (data-source project))
     (configure project
